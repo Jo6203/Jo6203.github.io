@@ -1,14 +1,52 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MY BOOK STORE</title>
+    <title>Book Haven | Your Literary Paradise</title>
     <style>
-        body { font-family: Arial; text-align: center; padding: 50px; }
-        h1 { color: #2c3e50; }
+        /* Modern styling */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Arial', sans-serif; background: #f8f9fa; }
+        header { background: #2c3e50; color: white; padding: 2rem; text-align: center; }
+        nav { background: #34495e; padding: 1rem; display: flex; justify-content: center; gap: 1rem; }
+        nav a { color: white; text-decoration: none; font-weight: bold; }
+        .book-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; padding: 2rem; }
+        .book-card { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        footer { background: #2c3e50; color: white; text-align: center; padding: 1.5rem; margin-top: 2rem; }
     </style>
 </head>
 <body>
-    <h1>SUCCESS! 🎉</h1>
-    <p>Your GitHub Pages website is working!</p>
+    <header>
+        <h1>📚 Book Haven</h1>
+        <p>Discover your next favorite read</p>
+    </header>
+    
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Fiction</a>
+        <a href="#">Non-Fiction</a>
+        <a href="#">Contact</a>
+    </nav>
+    
+    <div class="book-container">
+        <!-- Book 1 -->
+        <div class="book-card">
+            <h3>The Great Gatsby</h3>
+            <p>F. Scott Fitzgerald</p>
+            <p>Classic | 1925</p>
+        </div>
+        
+        <!-- Book 2 -->
+        <div class="book-card">
+            <h3>Atomic Habits</h3>
+            <p>James Clear</p>
+            <p>Self-Help | 2018</p>
+        </div>
+        
+        <!-- Add more books below -->
+    </div>
+    
+    <footer>
+        © 2023 Book Haven | Made with ♥
+    </footer>
 </body>
 </html>
