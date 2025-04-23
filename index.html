@@ -1,52 +1,144 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book Haven | Your Literary Paradise</title>
+    <title>My Personal Book Library</title>
     <style>
-        /* Modern styling */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Arial', sans-serif; background: #f8f9fa; }
-        header { background: #2c3e50; color: white; padding: 2rem; text-align: center; }
-        nav { background: #34495e; padding: 1rem; display: flex; justify-content: center; gap: 1rem; }
-        nav a { color: white; text-decoration: none; font-weight: bold; }
-        .book-container { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 2rem; padding: 2rem; }
-        .book-card { background: white; border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-        footer { background: #2c3e50; color: white; text-align: center; padding: 1.5rem; margin-top: 2rem; }
+        /* Modern Library Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f8f9fa;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab-btn {
+            padding: 10px 20px;
+            background: #34495e;
+            color: white;
+            border: none;
+            cursor: pointer;
+            margin: 0 5px;
+            border-radius: 4px;
+        }
+        .tab-btn.active {
+            background: #2c3e50;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .book-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        .book-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .book-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .add-book-form {
+            margin: 20px 0;
+            padding: 20px;
+            background: #e8f4f8;
+            border-radius: 8px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+        }
+        button {
+            background: #27ae60;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
-    <header>
-        <h1>📚 Book Haven</h1>
-        <p>Discover your next favorite read</p>
-    </header>
+    <h1>📖 My Personal Library</h1>
     
-    <nav>
-        <a href="#">Home</a>
-        <a href="#">Fiction</a>
-        <a href="#">Non-Fiction</a>
-        <a href="#">Contact</a>
-    </nav>
-    
-    <div class="book-container">
-        <!-- Book 1 -->
-        <div class="book-card">
-            <h3>The Great Gatsby</h3>
-            <p>F. Scott Fitzgerald</p>
-            <p>Classic | 1925</p>
-        </div>
-        
-        <!-- Book 2 -->
-        <div class="book-card">
-            <h3>Atomic Habits</h3>
-            <p>James Clear</p>
-            <p>Self-Help | 2018</p>
-        </div>
-        
-        <!-- Add more books below -->
+    <div class="tabs">
+        <button class="tab-btn active" onclick="openTab('read')">Books I've Read</button>
+        <button class="tab-btn" onclick="openTab('want')">Books I Want</button>
     </div>
     
-    <footer>
-        © 2023 Book Haven | Made with ♥
-    </footer>
+    <div id="read" class="tab-content active">
+        <h2>Books I've Read</h2>
+        <div class="book-list" id="read-books">
+            <!-- Books will appear here -->
+        </div>
+    </div>
+    
+    <div id="want" class="tab-content">
+        <h2>Books I Want to Buy</h2>
+        <div class="book-list" id="want-books">
+            <!-- Books will appear here -->
+        </div>
+    </div>
+    
+    <div class="add-book-form">
+        <h3>Add New Book</h3>
+        <input type="text" id="book-title" placeholder="Book Title">
+        <input type="text" id="book-author" placeholder="Author">
+        <select id="book-status">
+            <option value="read">I've read this</option>
+            <option value="want">I want to buy this</option>
+        </select>
+        <button onclick="addBook()">Add Book</button>
+    </div>
+
+    <script>
+        // Simple library system
+        function openTab(tabName) {
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.getElementById(tabName).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+
+        function addBook() {
+            const title = document.getElementById('book-title').value;
+            const author = document.getElementById('book-author').value;
+            const status = document.getElementById('book-status').value;
+            
+            if (title && author) {
+                const bookCard = document.createElement('div');
+                bookCard.className = 'book-card';
+                bookCard.innerHTML = `
+                    <h3>${title}</h3>
+                    <p>By ${author}</p>
+                `;
+                
+                document.getElementById(`${status}-books`).appendChild(bookCard);
+                
+                // Clear inputs
+                document.getElementById('book-title').value = '';
+                document.getElementById('book-author').value = '';
+            }
+        }
+    </script>
 </body>
 </html>
