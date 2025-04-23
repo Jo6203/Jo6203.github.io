@@ -37,95 +37,323 @@
             min-height: 100vh;
         }
         
-        /* [Previous styles remain unchanged until .photo-section] */
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            margin-bottom: 2rem;
+        }
         
-        .photo-section {
-            padding: 2rem;
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--leather);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .subtitle {
+            color: var(--wood);
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+        
+        .library-nav {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        
+        .nav-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Playfair Display', serif;
+            color: var(--wood);
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            border-radius: 4px;
+        }
+        
+        .nav-btn.active {
+            background: rgba(139, 90, 43, 0.1);
+            color: var(--leather);
+            font-weight: 700;
+        }
+        
+        .search-section {
             background: rgba(255, 255, 255, 0.7);
+            padding: 2rem;
             border-radius: 8px;
-            margin-top: 2rem;
+            margin-bottom: 2rem;
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
         
-        .photo-upload-area {
-            border: 2px dashed var(--wood);
-            border-radius: 8px;
-            padding: 2rem;
-            text-align: center;
+        .search-container {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--wood);
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+        }
+        
+        .search-btn {
+            padding: 0 1.5rem;
+            background: var(--wood);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
             cursor: pointer;
-            transition: all 0.3s;
-            margin-bottom: 1rem;
+            transition: background 0.3s;
         }
         
-        .photo-upload-area:hover {
-            background: rgba(139, 90, 43, 0.05);
+        .search-btn:hover {
+            background: var(--leather);
         }
         
-        .upload-icon {
-            font-size: 2rem;
-            color: var(--wood);
-            margin-bottom: 1rem;
-        }
-        
-        #photoInput {
+        .bookshelf {
             display: none;
+            animation: fadeIn 0.5s;
         }
         
-        .photo-preview {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: 8px;
-            margin-top: 1rem;
-            display: none;
-            border: 2px solid var(--gold);
+        .bookshelf.active {
+            display: block;
         }
         
-        .memories-grid {
+        .shelf-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--leather);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+        }
+        
+        .book-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
         }
         
-        .memory-item {
-            position: relative;
+        .book {
+            background: rgba(255, 255, 255, 0.9);
             border-radius: 8px;
             overflow: hidden;
-            aspect-ratio: 1;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
         }
         
-        .memory-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s;
+        .book:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .memory-item:hover .memory-img {
-            transform: scale(1.05);
+        .book-cover {
+            height: 200px;
+            background: #f1f3f4;
+            background-size: cover;
+            background-position: center;
+            position: relative;
         }
         
-        .remove-memory {
+        .book-status {
             position: absolute;
             top: 10px;
             right: 10px;
-            background: rgba(139, 90, 43, 0.7);
+            background: var(--leather);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .book-info {
+            padding: 1.5rem;
+        }
+        
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--leather);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .book-author {
+            color: var(--wood);
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .book-desc {
+            font-size: 0.9rem;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .book-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .book-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: 'Lora', serif;
+            transition: all 0.3s;
+        }
+        
+        .add-read {
+            background: var(--wood);
+            color: white;
+        }
+        
+        .add-want {
+            background: var(--gold);
+            color: var(--ink);
+        }
+        
+        .remove-btn {
+            background: rgba(201, 166, 107, 0.2);
+            color: var(--wood);
+            border: 1px solid rgba(139, 90, 43, 0.3);
+        }
+        
+        .library-footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+        }
+        
+        .austen-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--leather);
+            font-style: italic;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Floating Photo Tab */
+        .photo-tab {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 100;
+        }
+        
+        .photo-btn {
+            background: var(--wood);
             color: white;
             border: none;
             border-radius: 50%;
-            width: 30px;
-            height: 30px;
+            width: 60px;
+            height: 60px;
+            font-size: 1.5rem;
             cursor: pointer;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
-        /* [Rest of your existing CSS] */
+        .photo-btn:hover {
+            background: var(--leather);
+            transform: scale(1.1);
+        }
+        
+        .photo-upload {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            background: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            width: 250px;
+            display: none;
+        }
+        
+        .photo-upload.active {
+            display: block;
+            animation: fadeIn 0.3s;
+        }
+        
+        .photo-preview {
+            width: 100%;
+            max-height: 200px;
+            object-fit: contain;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            display: none;
+        }
+        
+        .uploaded-photo {
+            position: fixed;
+            bottom: 90px;
+            right: 20px;
+            max-width: 300px;
+            max-height: 300px;
+            object-fit: contain;
+            border: 3px solid var(--gold);
+            border-radius: 8px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
+            display: none;
+        }
+        
+        .uploaded-photo.active {
+            display: block;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @media (max-width: 768px) {
+            .book-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .photo-upload {
+                width: 200px;
+                right: 10px;
+            }
+            
+            .uploaded-photo {
+                max-width: 250px;
+                right: 10px;
+            }
+        }
     </style>
 </head>
 <body>
     <div class="library-container">
         <header>
             <h1>My Personal Library</h1>
-            <p class="subtitle">Track books and memories</p>
+            <p class="subtitle">Track your literary journey</p>
         </header>
         
         <div class="library-nav">
@@ -137,9 +365,6 @@
             </button>
             <button class="nav-btn" onclick="showShelf('want')">
                 <i class="fas fa-bookmark"></i> Want to Read
-            </button>
-            <button class="nav-btn" onclick="showShelf('photos')">
-                <i class="fas fa-camera"></i> Photos
             </button>
         </div>
         
@@ -182,35 +407,30 @@
             </div>
         </section>
         
-        <!-- Photos Section -->
-        <section id="photos" class="bookshelf">
-            <div class="photo-section">
-                <h2 class="shelf-title">My Reading Memories</h2>
-                
-                <label for="photoInput" class="photo-upload-area">
-                    <div class="upload-icon">
-                        <i class="fas fa-cloud-upload-alt"></i>
-                    </div>
-                    <p>Click or drag photos here</p>
-                    <small>(Book hauls, reading spots, favorite passages)</small>
-                    <input type="file" id="photoInput" accept="image/*" multiple>
-                </label>
-                
-                <img id="photoPreview" class="photo-preview">
-                
-                <div class="memories-grid" id="memoriesGrid">
-                    <!-- Uploaded photos will appear here -->
-                    <div class="empty-state">
-                        <p>No memories yet. Upload your first photo!</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        
         <div class="library-footer">
             <p class="austen-quote">
                 You have bewitched me, body and soul, and I love—I love—I love you.
             </p>
+        </div>
+        
+        <!-- Floating Photo Tab -->
+        <div class="photo-tab">
+            <button class="photo-btn" onclick="togglePhotoUpload()">
+                <i class="fas fa-camera"></i>
+            </button>
+            <div class="photo-upload" id="photoUpload">
+                <input type="file" id="photoInput" accept="image/*" style="display: none;">
+                <button onclick="document.getElementById('photoInput').click()" 
+                        style="background: var(--wood); color: white; border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; width: 100%; margin-bottom: 1rem;">
+                    Choose Photo
+                </button>
+                <img id="photoPreview" class="photo-preview">
+                <button id="savePhotoBtn" 
+                        style="background: var(--gold); color: var(--ink); border: none; padding: 0.5rem 1rem; border-radius: 4px; cursor: pointer; width: 100%; display: none;">
+                    Save Photo
+                </button>
+            </div>
+            <img id="uploadedPhoto" class="uploaded-photo">
         </div>
     </div>
 
@@ -281,67 +501,139 @@
             });
         }
         
+        // Search books using Google Books API
+        async function searchBooks() {
+            const query = document.getElementById('bookSearch').value.trim();
+            if (!query) return;
+            
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '<div class="empty-state"><p>Searching...</p></div>';
+            
+            try {
+                const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=12`);
+                const data = await response.json();
+                
+                resultsContainer.innerHTML = '';
+                
+                if (data.items && data.items.length > 0) {
+                    data.items.forEach(book => {
+                        const bookInfo = book.volumeInfo;
+                        const bookEl = document.createElement('div');
+                        bookEl.className = 'book';
+                        bookEl.innerHTML = `
+                            <div class="book-cover" style="background-image: url('${bookInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/200x300?text=No+Cover'}')">
+                                <span class="book-status">Search Result</span>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">${bookInfo.title}</h3>
+                                <p class="book-author">${bookInfo.authors?.join(', ') || 'Unknown Author'}</p>
+                                <p class="book-desc">${bookInfo.description ? bookInfo.description.substring(0, 150) + '...' : 'No description available.'}</p>
+                                <div class="book-actions">
+                                    <button class="book-btn add-read" onclick="addToLibrary('read', '${escapeQuote(bookInfo.title)}', '${escapeQuote(bookInfo.authors?.[0] || '')}', '${escapeQuote(bookInfo.description || '')}', '${bookInfo.imageLinks?.thumbnail || ''}')">
+                                        <i class="fas fa-book-open"></i> I've Read This
+                                    </button>
+                                    <button class="book-btn add-want" onclick="addToLibrary('want', '${escapeQuote(bookInfo.title)}', '${escapeQuote(bookInfo.authors?.[0] || '')}', '${escapeQuote(bookInfo.description || '')}', '${bookInfo.imageLinks?.thumbnail || ''}')">
+                                        <i class="fas fa-bookmark"></i> Want to Read
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        resultsContainer.appendChild(bookEl);
+                    });
+                } else {
+                    resultsContainer.innerHTML = '<div class="empty-state"><p>No books found. Try another search.</p></div>';
+                }
+            } catch (error) {
+                console.error('Search error:', error);
+                resultsContainer.innerHTML = '<div class="empty-state"><p>Error searching for books. Please try again.</p></div>';
+            }
+        }
+        
+        // Helper function to escape quotes
+        function escapeQuote(str) {
+            return str ? str.replace(/'/g, "\\'").replace(/"/g, '\\"') : '';
+        }
+        
+        // Add book to library
+        function addToLibrary(shelf, title, author, description, cover) {
+            myLibrary[shelf].push({
+                title: title.replace(/\\'/g, "'").replace(/\\"/g, '"'),
+                author: author.replace(/\\'/g, "'").replace(/\\"/g, '"'),
+                description: description ? description.replace(/\\'/g, "'").replace(/\\"/g, '"') : '',
+                cover
+            });
+            
+            saveLibrary();
+            displayBooks(shelf);
+            
+            alert(`"${title.replace(/\\'/g, "'").replace(/\\"/g, '"')}" added to your ${shelf === 'read' ? 'books I\'ve read' : 'want to read'} collection!`);
+            
+            showShelf(shelf);
+        }
+        
+        // Remove book from library
+        function removeBook(shelf, index) {
+            const bookTitle = myLibrary[shelf][index].title;
+            if (confirm(`Remove "${bookTitle}" from your ${shelf === 'read' ? 'read books' : 'want to read'} list?`)) {
+                myLibrary[shelf].splice(index, 1);
+                saveLibrary();
+                displayBooks(shelf);
+            }
+        }
+        
         // Photo Upload Functionality
+        function togglePhotoUpload() {
+            document.getElementById('photoUpload').classList.toggle('active');
+        }
+        
         document.getElementById('photoInput').addEventListener('change', function(e) {
-            const files = e.target.files;
-            for (let i = 0; i < files.length; i++) {
+            const file = e.target.files[0];
+            if (file) {
                 const reader = new FileReader();
                 reader.onload = function(event) {
-                    addMemory(event.target.result);
+                    const preview = document.getElementById('photoPreview');
+                    preview.src = event.target.result;
+                    preview.style.display = 'block';
+                    
+                    const saveBtn = document.getElementById('savePhotoBtn');
+                    saveBtn.style.display = 'block';
+                    saveBtn.onclick = function() {
+                        savePhoto(event.target.result);
+                    };
                 };
-                reader.readAsDataURL(files[i]);
+                reader.readAsDataURL(file);
             }
         });
         
-        function addMemory(imageData) {
-            const memories = JSON.parse(localStorage.getItem('libraryMemories')) || [];
-            const memoryId = Date.now();
-            memories.push({ id: memoryId, image: imageData });
-            localStorage.setItem('libraryMemories', JSON.stringify(memories));
-            
-            displayMemories();
+        function savePhoto(photoData) {
+            localStorage.setItem('libraryPhoto', photoData);
+            showUploadedPhoto(photoData);
+            togglePhotoUpload();
         }
         
-        function displayMemories() {
-            const memories = JSON.parse(localStorage.getItem('libraryMemories')) || [];
-            const grid = document.getElementById('memoriesGrid');
+        function showUploadedPhoto(photoData) {
+            const photo = document.getElementById('uploadedPhoto');
+            photo.src = photoData;
+            photo.classList.add('active');
             
-            if (memories.length === 0) {
-                grid.innerHTML = '<div class="empty-state"><p>No memories yet. Upload your first photo!</p></div>';
-                return;
-            }
-            
-            grid.innerHTML = '';
-            memories.forEach(memory => {
-                const memoryEl = document.createElement('div');
-                memoryEl.className = 'memory-item';
-                memoryEl.innerHTML = `
-                    <img src="${memory.image}" class="memory-img" alt="Memory">
-                    <button class="remove-memory" onclick="removeMemory(${memory.id})">
-                        <i class="fas fa-times"></i>
-                    </button>
-                `;
-                grid.appendChild(memoryEl);
-            });
+            // Auto-hide after 5 seconds
+            setTimeout(() => {
+                photo.classList.remove('active');
+            }, 5000);
         }
-        
-        function removeMemory(id) {
-            let memories = JSON.parse(localStorage.getItem('libraryMemories')) || [];
-            memories = memories.filter(m => m.id !== id);
-            localStorage.setItem('libraryMemories', JSON.stringify(memories));
-            displayMemories();
-        }
-        
-        // [Rest of your existing book-related JavaScript functions]
         
         // Initialize
         document.addEventListener('DOMContentLoaded', () => {
             loadLibrary();
-            displayMemories();
             
             document.getElementById('bookSearch').addEventListener('keypress', (e) => {
                 if (e.key === 'Enter') searchBooks();
             });
+            
+            const savedPhoto = localStorage.getItem('libraryPhoto');
+            if (savedPhoto) {
+                showUploadedPhoto(savedPhoto);
+            }
         });
     </script>
 </body>
