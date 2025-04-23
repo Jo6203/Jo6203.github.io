@@ -22,7 +22,6 @@
             line-height: 1.8;
             margin: 0;
             padding: 0;
-            /* Breathtaking library background */
             background: 
                 linear-gradient(rgba(245, 240, 230, 0.9), rgba(245, 240, 230, 0.9)),
                 url('https://images.unsplash.com/photo-1507842217343-583bb7270b66?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
@@ -43,15 +42,158 @@
             border-left: 1px solid rgba(139, 90, 43, 0.2);
             border-right: 1px solid rgba(139, 90, 43, 0.2);
         }
-
-        /* [Keep all your previous CSS styles] */
-        /* ... */
-
-        /* Enhanced book cards with parchment effect */
+        
+        header {
+            text-align: center;
+            padding: 2rem 0;
+            border-bottom: 2px solid var(--wood);
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--gold);
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--leather);
+            margin-bottom: 0.5rem;
+            letter-spacing: 1px;
+        }
+        
+        .subtitle {
+            color: var(--wood);
+            font-style: italic;
+            font-size: 1.2rem;
+        }
+        
+        .library-nav {
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+            border-bottom: 1px solid var(--wood);
+            flex-wrap: wrap;
+        }
+        
+        .nav-btn {
+            padding: 1rem 2rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-family: 'Playfair Display', serif;
+            color: var(--wood);
+            font-size: 1.1rem;
+            position: relative;
+            transition: all 0.3s;
+            margin: 0 0.5rem;
+        }
+        
+        .nav-btn.active {
+            color: var(--leather);
+            font-weight: 700;
+        }
+        
+        .nav-btn.active::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: var(--leather);
+        }
+        
+        .search-section {
+            background: rgba(139, 90, 43, 0.05);
+            padding: 2rem;
+            border-radius: 5px;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(139, 90, 43, 0.2);
+        }
+        
+        .search-container {
+            display: flex;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .search-input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: 1px solid var(--wood);
+            border-right: none;
+            border-radius: 4px 0 0 4px;
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+        }
+        
+        .search-btn {
+            padding: 0 1.5rem;
+            background: var(--wood);
+            color: white;
+            border: none;
+            border-radius: 0 4px 4px 0;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .search-btn:hover {
+            background: var(--leather);
+        }
+        
+        .bookshelf {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+        
+        .bookshelf.active {
+            display: block;
+        }
+        
+        .shelf-title {
+            font-family: 'Playfair Display', serif;
+            color: var(--leather);
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--wood);
+            position: relative;
+        }
+        
+        .shelf-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            height: 2px;
+            width: 100%;
+            background: linear-gradient(90deg, var(--wood), transparent);
+            z-index: -1;
+        }
+        
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        
         .book {
             background: 
                 linear-gradient(var(--pages), var(--pages)),
                 url('https://www.transparenttextures.com/patterns/paper.png');
+            border-radius: 3px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
             border: 1px solid rgba(139, 90, 43, 0.3);
             position: relative;
         }
@@ -66,33 +208,438 @@
             background: var(--gold);
             opacity: 0.7;
         }
-
-        /* Floating shelf effect */
-        .shelf-title {
-            position: relative;
-            padding-left: 1.5rem;
+        
+        .book:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
         
-        .shelf-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            top: 50%;
-            height: 2px;
-            width: 100%;
-            background: linear-gradient(90deg, var(--wood), transparent);
-            z-index: -1;
+        .book-cover {
+            height: 200px;
+            background: #f1f3f4;
+            background-size: cover;
+            background-position: center;
+            position: relative;
         }
-
-        /* [Rest of your existing CSS] */
+        
+        .book-status {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background: var(--leather);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 3px;
+            font-size: 0.8rem;
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .book-info {
+            padding: 1.5rem;
+        }
+        
+        .book-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--leather);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .book-author {
+            color: var(--wood);
+            font-style: italic;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        
+        .book-desc {
+            font-size: 0.9rem;
+            color: var(--ink);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        
+        .book-actions {
+            display: flex;
+            justify-content: space-between;
+        }
+        
+        .book-btn {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+            font-family: 'Lora', serif;
+            transition: all 0.3s;
+        }
+        
+        .add-read {
+            background: var(--wood);
+            color: white;
+        }
+        
+        .add-want {
+            background: var(--gold);
+            color: var(--ink);
+        }
+        
+        .remove-btn {
+            background: #c9a66b33;
+            color: var(--wood);
+            border: 1px solid var(--wood);
+        }
+        
+        .couples-tab {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: rgba(139, 90, 43, 0.05);
+            border-radius: 8px;
+            margin: 2rem 0;
+        }
+        
+        .couples-photo {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--gold);
+            margin: 0 auto 2rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .love-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--leather);
+            font-style: italic;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto 1rem;
+        }
+        
+        .love-quote::before,
+        .love-quote::after {
+            content: '"';
+            color: var(--gold);
+            font-size: 2rem;
+        }
+        
+        .quote-translation {
+            color: var(--wood);
+            font-size: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .library-footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--wood);
+        }
+        
+        .austen-quote {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--leather);
+            font-style: italic;
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+        
+        .austen-quote::before,
+        .austen-quote::after {
+            content: '"';
+            color: var(--gold);
+            font-size: 1.5rem;
+        }
+        
+        .quote-author {
+            display: block;
+            margin-top: 1rem;
+            color: var(--wood);
+            font-size: 1rem;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @media (max-width: 768px) {
+            .book-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav-btn {
+                padding: 0.8rem 1rem;
+                font-size: 1rem;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .couples-photo {
+                width: 200px;
+                height: 200px;
+            }
+        }
     </style>
 </head>
 <body>
-    <!-- [Keep all your existing HTML content] -->
-    <!-- The couples tab with photo remains unchanged -->
+    <div class="library-container">
+        <header>
+            <h1>Our Literary Love Story</h1>
+            <p class="subtitle">Books and love, bound together</p>
+        </header>
+        
+        <div class="library-nav">
+            <button class="nav-btn active" onclick="showShelf('search')">
+                <i class="fas fa-search"></i> Find Books
+            </button>
+            <button class="nav-btn" onclick="showShelf('read')">
+                <i class="fas fa-book-open"></i> Books We've Read
+            </button>
+            <button class="nav-btn" onclick="showShelf('want')">
+                <i class="fas fa-bookmark"></i> Want to Read
+            </button>
+            <button class="nav-btn" onclick="showShelf('couples')">
+                <i class="fas fa-heart"></i> Our Story
+            </button>
+        </div>
+        
+        <!-- Search Section -->
+        <section id="search" class="bookshelf active">
+            <div class="search-section">
+                <h2 class="shelf-title">Discover New Books</h2>
+                <div class="search-container">
+                    <input type="text" class="search-input" placeholder="Search by title or author..." id="bookSearch">
+                    <button class="search-btn" onclick="searchBooks()">
+                        <i class="fas fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+            
+            <div id="searchResults" class="book-grid">
+                <div class="empty-state">
+                    <p>Search for books to add to your library</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Read Books Shelf -->
+        <section id="read" class="bookshelf">
+            <h2 class="shelf-title">Books We've Read</h2>
+            <div id="readBooks" class="book-grid">
+                <div class="empty-state">
+                    <p>You haven't added any books yet</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Want to Read Shelf -->
+        <section id="want" class="bookshelf">
+            <h2 class="shelf-title">Want to Read</h2>
+            <div id="wantBooks" class="book-grid">
+                <div class="empty-state">
+                    <p>Your reading wishlist is empty</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Couples Tab -->
+        <section id="couples" class="bookshelf">
+            <div class="couples-tab">
+                <!-- Replace with your photo URL -->
+                <img src="YOUR_PHOTO_URL_HERE" alt="You and your wife" class="couples-photo">
+                
+                <p class="love-quote">
+                    Eres mi hoy y todos mis mañanas
+                </p>
+                <p class="quote-translation">
+                    ("You are my today and all of my tomorrows")
+                </p>
+                
+                <p style="color: var(--wood); max-width: 600px; margin: 0 auto;">
+                    Cada libro en esta biblioteca es una página en nuestra historia de amor. 
+                    Juntos hemos recorrido mundos imaginarios y hemos escrito nuestro propio 
+                    cuento de hadas.
+                </p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3 style="color: var(--leather); font-family: 'Playfair Display';">Our Favorite Reads Together</h3>
+                <!-- Optional: Add special books you've read as a couple -->
+            </div>
+        </section>
+        
+        <div class="library-footer">
+            <p class="austen-quote">
+                You have bewitched me, body and soul, and I love—I love—I love you.
+                <span class="quote-author">— Mr. Darcy, Pride and Prejudice</span>
+            </p>
+        </div>
+    </div>
 
     <script>
-        // [Your existing JavaScript]
+        // Library Data
+        let myLibrary = {
+            read: [],
+            want: []
+        };
+        
+        // Load saved library
+        function loadLibrary() {
+            const saved = localStorage.getItem('myPersonalLibrary');
+            if (saved) {
+                myLibrary = JSON.parse(saved);
+                displayBooks('read');
+                displayBooks('want');
+            }
+        }
+        
+        // Save library
+        function saveLibrary() {
+            localStorage.setItem('myPersonalLibrary', JSON.stringify(myLibrary));
+        }
+        
+        // Show different shelves
+        function showShelf(shelfId) {
+            document.querySelectorAll('.bookshelf').forEach(shelf => {
+                shelf.classList.remove('active');
+            });
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            
+            document.getElementById(shelfId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+        
+        // Display books on a shelf
+        function displayBooks(shelf) {
+            const container = document.getElementById(`${shelf}Books`);
+            container.innerHTML = '';
+            
+            if (myLibrary[shelf].length === 0) {
+                container.innerHTML = '<div class="empty-state"><p>No books in this collection yet</p></div>';
+                return;
+            }
+            
+            myLibrary[shelf].forEach((book, index) => {
+                const bookEl = document.createElement('div');
+                bookEl.className = 'book';
+                bookEl.innerHTML = `
+                    <div class="book-cover" style="background-image: url('${book.cover || 'https://via.placeholder.com/200x300?text=No+Cover'}')">
+                        <span class="book-status">${shelf === 'read' ? 'Read' : 'Want to Read'}</span>
+                    </div>
+                    <div class="book-info">
+                        <h3 class="book-title">${book.title}</h3>
+                        <p class="book-author">${book.author || 'Unknown Author'}</p>
+                        <p class="book-desc">${book.description ? book.description.substring(0, 150) + '...' : 'No description available.'}</p>
+                        <div class="book-actions">
+                            <button class="book-btn remove-btn" onclick="removeBook('${shelf}', ${index})">
+                                <i class="fas fa-times"></i> Remove
+                            </button>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(bookEl);
+            });
+        }
+        
+        // Search books using Google Books API
+        async function searchBooks() {
+            const query = document.getElementById('bookSearch').value.trim();
+            if (!query) return;
+            
+            const resultsContainer = document.getElementById('searchResults');
+            resultsContainer.innerHTML = '<div class="empty-state"><p>Searching...</p></div>';
+            
+            try {
+                const response = await fetch(`https://www.googleapis.com/books/v1/volumes?q=${encodeURIComponent(query)}&maxResults=12`);
+                const data = await response.json();
+                
+                resultsContainer.innerHTML = '';
+                
+                if (data.items && data.items.length > 0) {
+                    data.items.forEach(book => {
+                        const bookInfo = book.volumeInfo;
+                        const bookEl = document.createElement('div');
+                        bookEl.className = 'book';
+                        bookEl.innerHTML = `
+                            <div class="book-cover" style="background-image: url('${bookInfo.imageLinks?.thumbnail || 'https://via.placeholder.com/200x300?text=No+Cover'}')">
+                                <span class="book-status">Search Result</span>
+                            </div>
+                            <div class="book-info">
+                                <h3 class="book-title">${bookInfo.title}</h3>
+                                <p class="book-author">${bookInfo.authors?.join(', ') || 'Unknown Author'}</p>
+                                <p class="book-desc">${bookInfo.description ? bookInfo.description.substring(0, 150) + '...' : 'No description available.'}</p>
+                                <div class="book-actions">
+                                    <button class="book-btn add-read" onclick="addToLibrary('read', '${escapeQuote(bookInfo.title)}', '${escapeQuote(bookInfo.authors?.[0] || '')}', '${escapeQuote(bookInfo.description || '')}', '${bookInfo.imageLinks?.thumbnail || ''}')">
+                                        <i class="fas fa-book-open"></i> I've Read This
+                                    </button>
+                                    <button class="book-btn add-want" onclick="addToLibrary('want', '${escapeQuote(bookInfo.title)}', '${escapeQuote(bookInfo.authors?.[0] || '')}', '${escapeQuote(bookInfo.description || '')}', '${bookInfo.imageLinks?.thumbnail || ''}')">
+                                        <i class="fas fa-bookmark"></i> Want to Read
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                        resultsContainer.appendChild(bookEl);
+                    });
+                } else {
+                    resultsContainer.innerHTML = '<div class="empty-state"><p>No books found. Try another search.</p></div>';
+                }
+            } catch (error) {
+                console.error('Search error:', error);
+                resultsContainer.innerHTML = '<div class="empty-state"><p>Error searching for books. Please try again.</p></div>';
+            }
+        }
+        
+        // Helper function to escape quotes
+        function escapeQuote(str) {
+            return str ? str.replace(/'/g, "\\'").replace(/"/g, '\\"') : '';
+        }
+        
+        // Add book to library
+        function addToLibrary(shelf, title, author, description, cover) {
+            myLibrary[shelf].push({
+                title: title.replace(/\\'/g, "'").replace(/\\"/g, '"'),
+                author: author.replace(/\\'/g, "'").replace(/\\"/g, '"'),
+                description: description ? description.replace(/\\'/g, "'").replace(/\\"/g, '"') : '',
+                cover
+            });
+            
+            saveLibrary();
+            displayBooks(shelf);
+            
+            alert(`"${title.replace(/\\'/g, "'").replace(/\\"/g, '"')}" added to your ${shelf === 'read' ? 'books I\'ve read' : 'want to read'} collection!`);
+            
+            showShelf(shelf);
+        }
+        
+        // Remove book from library
+        function removeBook(shelf, index) {
+            const bookTitle = myLibrary[shelf][index].title;
+            if (confirm(`Remove "${bookTitle}" from your ${shelf === 'read' ? 'read books' : 'want to read'} list?`)) {
+                myLibrary[shelf].splice(index, 1);
+                saveLibrary();
+                displayBooks(shelf);
+            }
+        }
+        
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadLibrary();
+            
+            // Allow pressing Enter to search
+            document.getElementById('bookSearch').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') searchBooks();
+            });
+        });
     </script>
 </body>
 </html>
