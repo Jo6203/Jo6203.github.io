@@ -264,7 +264,7 @@
 
     <div class="container">
         <!-- Discover Tab -->
-        <div id-shelf="discover" class="bookshelf active">
+       <div id="discover" class="bookshelf active">
             <div class="search-container">
                 <input type="text" id="search-input" placeholder="Search by title, author, or genre..." onkeypress="if(event.key === 'Enter') searchBooks()">
                 <button class="btn" onclick="searchBooks()"><i class="fas fa-search"></i> Search</button>
@@ -275,13 +275,13 @@
         </div>
 
         <!-- Read Tab -->
-        <div id-shelf="read" class="bookshelf">
+        <div id="read" class="bookshelf">
             <h2 class="shelf-title">Completed Works</h2>
             <div class="book-grid" id="read-books"></div>
         </div>
 
         <!-- Want to Read Tab -->
-        <div id-shelf="want" class="bookshelf">
+        <div id="want" class="bookshelf">
             <h2 class="shelf-title">The Reading List</h2>
             <div class="book-grid" id="want-books"></div>
         </div>
@@ -306,7 +306,7 @@
             document.querySelectorAll('.bookshelf').forEach(shelf => shelf.classList.remove('active'));
             document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('active'));
             
-            const selectedShelf = document.querySelector(`[id-shelf="${shelfId}"]`);
+            const selectedShelf = document.querySelector(`[id="${shelfId}"]`);
             if(selectedShelf) selectedShelf.classList.add('active');
             
             const selectedTab = document.getElementById(`tab-${shelfId}`);
